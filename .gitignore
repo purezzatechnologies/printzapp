@@ -24,6 +24,11 @@ dist-ssr
 .printzapp-data.json
 .printzapp-artwork/
 .printzapp-evidence/
+printzapp.db*
+
+# Local workspace helpers
+.claude/
+package-lock.json
 
 # Editor directories and files
 .vscode/*

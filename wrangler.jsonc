@@ -1,0 +1,43 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tanstack-start-app",
+  "compatibility_date": "2025-09-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/react-start/server-entry",
+
+  // Vars (override in .dev.vars locally, in dashboard for prod).
+  // SESSION_SECRET MUST be set in production — a random 32+ char string.
+  "vars": {
+    "NODE_ENV": "production"
+  },
+
+  // ---------------------------------------------------------------------
+  // Production persistence bindings — uncomment + fill in IDs once D1 / R2
+  // are created via wrangler. Local dev currently uses a JSON file at
+  // .printzapp-data.json. Migrate the in-memory store in src/lib/backend.ts
+  // to use env.DB (SQL prepared statements) and env.ARTWORK_BUCKET (R2 put)
+  // for production deployments.
+  // ---------------------------------------------------------------------
+  //
+  // "d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "printzapp",
+  //     "database_id": "<your-d1-database-id>"
+  //   }
+  // ],
+  //
+  // "r2_buckets": [
+  //   {
+  //     "binding": "ARTWORK_BUCKET",
+  //     "bucket_name": "printzapp-artwork"
+  //   }
+  // ],
+  //
+  // "kv_namespaces": [
+  //   {
+  //     "binding": "CACHE",
+  //     "id": "<your-kv-namespace-id>"
+  //   }
+  // ]
+}

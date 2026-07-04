@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"Home: %{http_code}\\\\n\" http://localhost:8080/)",
+      "Bash(curl -s -o /dev/null -w \"Login: %{http_code}\\\\n\" http://localhost:8080/login)",
+      "Bash(curl -s -o /dev/null -w \"Superadmin \\(unauth\\): %{http_code}\\\\n\" http://localhost:8080/superadmin -L --max-redirs 0)",
+      "Bash(curl -s -b cookies.txt -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/superadmin)",
+      "Bash(curl -s http://localhost:8080/)",
+      "Bash(curl -s http://localhost:8080/login)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/vendor)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/superadmin)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/product/biz-cards)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/superadmin/payouts)",
+      "Bash(curl -s -o /dev/null -w \"Signup: %{http_code}\\\\n\" http://localhost:8080/signup)",
+      "Bash(curl -s -o /dev/null -w \"Vendor: %{http_code}\\\\n\" http://localhost:8080/vendor)",
+      "Bash(curl -s -o /dev/null -w \"Superadmin: %{http_code}\\\\n\" http://localhost:8080/superadmin)",
+      "Bash(curl -s -o /dev/null -w \"Product: %{http_code}\\\\n\" http://localhost:8080/product/biz-cards)",
+      "Bash(curl -s -o /dev/null -w \"Superadmin/payouts: %{http_code}\\\\n\" http://localhost:8080/superadmin/payouts)",
+      "Bash(pnpm add *)"
+    ]
+  }
+}

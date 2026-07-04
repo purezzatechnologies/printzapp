@@ -1,14 +1,25 @@
+# =========================
+# Builder Stage
+# =========================
 FROM node:22-alpine AS builder
 
 WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
+# Copy source
 COPY . .
 
+# Build app
 RUN npm run build
 
+# =========================
+# Runtime Stage
+# =========================
 FROM node:22-alpine
 
 WORKDIR /app
@@ -16,8 +27,13 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
+# Copy package files
+COPY package*.json ./
+
+# Install production dependencies
+RUN npm install --omit=dev
+
+# Copy build output
 COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000

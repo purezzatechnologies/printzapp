@@ -3,7 +3,6 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
-
 RUN npm install
 
 COPY . .
@@ -19,12 +18,9 @@ ENV PORT=3000
 ENV HOST=0.0.0.0
 
 COPY package*.json ./
-
 RUN npm install --omit=dev
 
 COPY --from=builder /app/dist ./dist
-
-# If public exists
 COPY --from=builder /app/public ./public
 
 EXPOSE 3000
